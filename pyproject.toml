@@ -4,9 +4,7 @@ version = "0.1.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = [
-  "flet==0.25.1"
-]
+dependencies = ["flet==0.25.1"]
 
 
 [tool.flet]
@@ -26,3 +24,6 @@ copyright = "Copyright (C) 2024 by Creative Media Group"
 
 [tool.flet.app]
 path = "src"
+
+[tool.flet.flutter.dependencies]
+flet_audio = "^0.25.1"
