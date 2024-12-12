@@ -27,3 +27,8 @@ path = "src"
 
 [tool.flet.flutter.dependencies]
 flet_audio = "^0.25.1"
+
+[tool.flet.compile]
+app = true
+packages = true
+cleanup = true

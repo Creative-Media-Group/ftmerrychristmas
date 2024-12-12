@@ -1,6 +1,6 @@
 import flet as ft
 
-
+mysupported_locales = ["en","de"]
 def main(page: ft.Page):
     audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.wav",autoplay=True)
     page.overlay.append(audio)
@@ -26,7 +26,7 @@ def main(page: ft.Page):
     page.add(
         ft.SafeArea(
             ft.Container(
-                ft.,
+                ft.Dropdown(value="en",options=[ft.dropdown.Option(locale) for locale in mysupported_locales]),
                 alignment=ft.alignment.center,
             ),
             expand=True,
