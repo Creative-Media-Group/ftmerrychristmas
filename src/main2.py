@@ -2,8 +2,7 @@ import flet as ft
 
 
 def main(page: ft.Page):
-    audio = ft.Audio(src="")
-    counter = ft.Text("Merry Christmas", size=50, data=0)
+    counter = ft.Text("0", size=50, data=0)
 
     def increment_click(e):
         counter.data += 1
