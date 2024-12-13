@@ -1,17 +1,31 @@
 import flet as ft
+from mylocale.TR import tr
 
 mysupported_locales = ["en", "de"]
+
+tr_file = "src/assets/localisation.csv"
 
 
 def main(page: ft.Page):
     audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.wav", autoplay=True)
     page.overlay.append(audio)
-    counter = ft.Text("Merry Christmas", size=50, data=0)
 
-    def increment_click(e):
-        counter.data += 1
-        counter.value = str(counter.data)
-        counter.update()
+    def changelang(e):
+        greeting.value = tr(
+            target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value
+        )
+        greeting.update()
+
+    lang = ft.Dropdown(
+        value="en",
+        options=[ft.dropdown.Option(locale) for locale in mysupported_locales],
+        on_change=changelang,
+    )
+    greeting = ft.Text(
+        tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value),
+        size=50,
+        data=0,
+    )
 
     # page.floating_action_button = ft.FloatingActionButton(
     #    icon=ft.Icons.ADD, on_click=increment_click
@@ -19,7 +33,7 @@ def main(page: ft.Page):
     page.add(
         ft.SafeArea(
             ft.Container(
-                counter,
+                greeting,
                 alignment=ft.alignment.center,
             ),
             expand=True,
@@ -28,16 +42,11 @@ def main(page: ft.Page):
     page.add(
         ft.SafeArea(
             ft.Container(
-                ft.Dropdown(
-                    value="en",
-                    options=[
-                        ft.dropdown.Option(locale) for locale in mysupported_locales
-                    ],
-                ),
+                lang,
                 alignment=ft.alignment.center,
+                expand=True,
             ),
-            expand=True,
-        )
+        ),
     )
 
 
