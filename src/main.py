@@ -7,6 +7,7 @@ tr_file = "src/assets/localisation.csv"
 
 
 def main(page: ft.Page):
+    page.fonts = {"Christmas": ""}
     audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.wav", autoplay=True)
     page.overlay.append(audio)
 
