@@ -8,7 +8,9 @@ tr_file = "src/assets/localisation.csv"
 
 def main(page: ft.Page):
     page.bgcolor = ft.Colors.TRANSPARENT
-    page.decoration = ft.BoxDecoration(image=ft.DecorationImage("src/assets/menuescreen.png"))
+    page.decoration = ft.BoxDecoration(
+        image=ft.DecorationImage("src/assets/menuescreen.png")
+    )
     lang = ft.Dropdown(
         value="en",
         options=[ft.dropdown.Option(locale) for locale in mysupported_locales],
