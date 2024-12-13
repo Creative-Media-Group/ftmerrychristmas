@@ -7,21 +7,28 @@ tr_file = "src/assets/localisation.csv"
 
 
 def main(page: ft.Page):
-    page.fonts = {"Christmas": ""}
-    audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.wav", autoplay=True)
-    page.overlay.append(audio)
-
-    def changelang(e):
-        greeting.value = tr(
-            target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value
-        )
-        greeting.update()
-
     lang = ft.Dropdown(
         value="en",
         options=[ft.dropdown.Option(locale) for locale in mysupported_locales],
-        on_change=changelang,
     )
+    lang.on_change = lambda _: changelang(lang.value)
+    text = ft.Text(
+        tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value)
+    )
+    page.appbar = ft.AppBar(title=text)
+    page.fonts = {"Christmas": "src/assets/fonts/QTMerryScript.otf"}
+    page.theme = ft.Theme(font_family="Christmas")
+    audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.mp3", autoplay=True)
+    page.overlay.append(audio)
+
+    def changelang(mylang):
+        greeting.value = tr(
+            target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=mylang
+        )
+        text.value = tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=mylang)
+        greeting.update()
+        page.appbar.update()
+
     greeting = ft.Text(
         tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value),
         size=50,
