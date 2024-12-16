@@ -20,8 +20,8 @@ def main(page: ft.Page):
         tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value)
     )
     page.appbar = ft.AppBar(title=text)
-    page.fonts = {"Christmas": "src/assets/fonts/QTMerryScript.otf"}
-    page.theme = ft.Theme(font_family="Christmas")
+    # page.fonts = {"Christmas": "src/assets/fonts/QTMerryScript.otf"}
+    # page.theme = ft.Theme(font_family="Christmas")
     audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.mp3", autoplay=True)
     page.overlay.append(audio)
 
