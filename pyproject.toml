@@ -1,11 +1,11 @@
 [project]
-name = "MerryChristmas"
+name = "ftmerrychristmas"
 version = "0.1.0"
 description = ""
 readme = "README.md"
-requires-python = ">=3.8"
-dependencies = ["--pre flet", "mylocale"]
-
+requires-python = ">=3.9"
+authors = [{ name = "Creative Media Group", email = "42028373+tct123@users.noreply.github.com" }]
+dependencies = ["flet==0.28.3"]
 
 [tool.flet]
 # org name in reverse domain name notation, e.g. "com.mycompany".
@@ -20,15 +20,21 @@ product = "MerryChristmas"
 company = "Creative Media Group"
 
 # copyright text to display in about app dialogs
-copyright = "Copyright (C) 2024 by Creative Media Group"
+copyright = "Copyright (C) 2025 by Creative Media Group"
 
 [tool.flet.app]
 path = "src"
 
-[tool.flet.flutter.dependencies]
-flet_audio = "^0.26.*"
+[tool.uv]
+dev-dependencies = ["flet[all]==0.28.3", "mylocale"]
+
+[tool.poetry]
+package-mode = false
 
 [tool.flet.compile]
 app = true
 packages = true
 cleanup = true
+
+[tool.poetry.group.dev.dependencies]
+flet = { extras = ["all"], version = "0.28.3" }
