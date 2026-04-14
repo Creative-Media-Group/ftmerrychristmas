@@ -3,38 +3,21 @@ name = "ftmerrychristmas"
 version = "0.1.0"
 description = ""
 readme = "README.md"
-requires-python = ">=3.9"
-authors = [{ name = "Creative Media Group", email = "42028373+tct123@users.noreply.github.com" }]
-dependencies = ["flet==0.28.3"]
+requires-python = ">=3.10"
+authors = [
+    { name = "Creative Media Group", email = "42028373+tct123@users.noreply.github.com" },
+]
+dependencies = ["flet>=0.84.0", "mylocale"]
+
+[dependency-groups]
+dev = ["flet-cli>=0.84.0", "flet-desktop>=0.84.0", "flet-web>=0.84.0"]
 
 [tool.flet]
-# org name in reverse domain name notation, e.g. "com.mycompany".
-# Combined with project.name to build bundle ID for iOS and Android apps
-org = "de.cmg"
-
-# project display name that is used as an app title on Android and iOS home screens,
-# shown in window titles and about app dialogs on desktop.
-product = "MerryChristmas"
-
-# company name to display in about app dialogs
-company = "Creative Media Group"
-
-# copyright text to display in about app dialogs
-copyright = "Copyright (C) 2025 by Creative Media Group"
+desktop_flavor = "light"                      # Change to "full" to use flet-audio and flet-video
+org = "com.mycompany"
+product = "ftmerrychristmas"
+company = "Flet"
+copyright = "Copyright (C) 2023-2026 by Flet"
 
 [tool.flet.app]
 path = "src"
-
-[tool.uv]
-dev-dependencies = ["flet[all]==0.28.3", "mylocale"]
-
-[tool.poetry]
-package-mode = false
-
-[tool.flet.compile]
-app = true
-packages = true
-cleanup = true
-
-[tool.poetry.group.dev.dependencies]
-flet = { extras = ["all"], version = "0.28.3" }
