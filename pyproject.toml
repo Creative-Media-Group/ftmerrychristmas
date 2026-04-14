@@ -7,17 +7,17 @@ requires-python = ">=3.10"
 authors = [
     { name = "Creative Media Group", email = "42028373+tct123@users.noreply.github.com" },
 ]
-dependencies = ["flet>=0.84.0", "mylocale"]
+dependencies = ["flet>=0.84.0", "flet-audio", "mylocale"]
 
 [dependency-groups]
 dev = ["flet-cli>=0.84.0", "flet-desktop>=0.84.0", "flet-web>=0.84.0"]
 
 [tool.flet]
-desktop_flavor = "light"                      # Change to "full" to use flet-audio and flet-video
-org = "com.mycompany"
-product = "ftmerrychristmas"
-company = "Flet"
-copyright = "Copyright (C) 2023-2026 by Flet"
+desktop_flavor = "full"                                       # Change to "full" to use flet-audio and flet-video
+org = "de.cmg"
+product = "MerryChristmas"
+company = "Creative Media Group"
+copyright = "Copyright (C) 2023-2026 by Creative Media Group"
 
 [tool.flet.app]
 path = "src"

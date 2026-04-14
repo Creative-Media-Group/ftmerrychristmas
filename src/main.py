@@ -1,5 +1,6 @@
 import flet as ft
-from mylocale.TR import tr
+import flet_audio as fta
+from mylocale.TR import TR
 
 mysupported_locales = ["en", "de"]
 
@@ -7,6 +8,7 @@ tr_file = "src/assets/localisation.csv"
 
 
 def main(page: ft.Page):
+    tr = TR(langcode="en", csv_file=tr_file)
     page.bgcolor = ft.Colors.TRANSPARENT
     page.decoration = ft.BoxDecoration(
         image=ft.DecorationImage("src/assets/menuescreen.png")
@@ -15,26 +17,15 @@ def main(page: ft.Page):
         value="en",
         options=[ft.dropdown.Option(locale) for locale in mysupported_locales],
     )
-    lang.on_change = lambda _: changelang(lang.value)
-    text = ft.Text(
-        tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value)
-    )
+    text = ft.Text(tr.tr(target_key="MERRYCHRISTMAS", langcode="en"))
     page.appbar = ft.AppBar(title=text)
     # page.fonts = {"Christmas": "src/assets/fonts/QTMerryScript.otf"}
     # page.theme = ft.Theme(font_family="Christmas")
-    audio = ft.Audio(src="assets/we-wish-you-a-merry-christmas.mp3", autoplay=True)
+    audio = fta.Audio(src="assets/we-wish-you-a-merry-christmas.mp3", autoplay=True)
     page.overlay.append(audio)
 
-    def changelang(mylang):
-        greeting.value = tr(
-            target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=mylang
-        )
-        text.value = tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=mylang)
-        greeting.update()
-        page.appbar.update()
-
     greeting = ft.Text(
-        tr(target_key="MERRYCHRISTMAS", csv_file=tr_file, langcode=lang.value),
+        tr.tr(target_key="MERRYCHRISTMAS", langcode="en"),
         size=50,
         data=0,
     )
@@ -46,7 +37,7 @@ def main(page: ft.Page):
         ft.SafeArea(
             ft.Container(
                 greeting,
-                alignment=ft.alignment.center,
+                alignment=ft.Alignment.CENTER,
             ),
             expand=True,
         )
@@ -55,11 +46,11 @@ def main(page: ft.Page):
         ft.SafeArea(
             ft.Container(
                 lang,
-                alignment=ft.alignment.center,
+                alignment=ft.Alignment.CENTER,
                 expand=True,
             ),
         ),
     )
 
 
-ft.app(main)
+ft.run(main)
