@@ -21,7 +21,7 @@ def main(page: ft.Page):
     page.appbar = ft.AppBar(title=text)
     # page.fonts = {"Christmas": "src/assets/fonts/QTMerryScript.otf"}
     # page.theme = ft.Theme(font_family="Christmas")
-    audio = fta.Audio(src="assets/we-wish-you-a-merry-christmas.mp3", autoplay=True)
+    audio = fta.Audio(src="/we-wish-you-a-merry-christmas.mp3", autoplay=True)
     page.overlay.append(audio)
 
     greeting = ft.Text(
